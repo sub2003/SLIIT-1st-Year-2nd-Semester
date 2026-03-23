@@ -23,6 +23,8 @@ public class Main {
             //q2.insert((int)Math.pow(qElement,3)); //
         }
 
+
+
         //System.out.print("Cube array: ");
         //while(q2.isEmpty()){
         //    System.out.print(q2.remove()+" ");
