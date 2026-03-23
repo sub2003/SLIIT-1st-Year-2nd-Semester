@@ -1,0 +1,25 @@
+.vscode/
+.idea/
+*.class
+target/
+build/
+bin/
+node_modules/
+*.log
+*.zip
+*.rar
+*.7z
+*.mp4
+*.jpg
+*.png
+*.pdf
+mysql-connector-j-9.6.0/
+.ipynb_checkpoints/
+*.docx
+*.lnk
+desktop.ini
+this directory git hub clone location/
+DSA printout/
+IS printout/
+OOP Lecture Slides/
+TR Lecture slides/
