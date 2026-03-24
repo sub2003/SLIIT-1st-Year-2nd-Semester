@@ -9,7 +9,7 @@ public class UniversityApp {
         Professor[] professorList={p1,p2,p3};
         Univesity u=new Univesity("SLIIT",professorList);
 
-        
+
         u.displayUniversityDetails();
     }
 }
