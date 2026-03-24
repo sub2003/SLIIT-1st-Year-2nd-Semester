@@ -73,4 +73,37 @@ public class Q6 {
         }
 
     }
+
+    /*
+DSA Lab Test Implemented Interleave Queue algorithm using Stack and Queue that works for both even and odd sized queues.
+Method	                 Structures	                Works For
+Stack + 1 Queue	1 stack	                       Even (odd with extra step)
+Stack + 2 Queues	1 stack + 1 queue	       Even & Odd
+Only Queues	        2 extra queues	       Even & Odd
+
+Logic:
+
+If queue size is even:
+Push first half of queue into stack
+Pop stack back into queue (reverse first half)
+Rotate first half elements to rear
+Push first half again into stack
+Interleave stack and queue elements alternately
+If queue size is odd:
+Push first half + middle element into stack
+Pop stack back into queue
+Rotate first half elements only
+Push first half + middle again into stack
+Move second half into a temporary queue
+Interleave stack and temporary queue into main queue
+
+This implementation ensures interleaving works correctly for both even and odd queue sizes.
+
+Example:
+Input: 1 2 3 4 5 6
+Output: 1 4 2 5 3 6
+
+Input: 1 2 3 4 5 6 7
+Output: 1 5 2 6 3 7 4
+    * */
 }
