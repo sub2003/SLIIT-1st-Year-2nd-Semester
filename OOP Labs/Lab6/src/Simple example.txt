@@ -1,0 +1,36 @@
+class Engine {
+    void start() {
+        System.out.println("Engine starting");
+    }
+}
+
+class Car {          // Composition (Car HAS-A Engine)
+    private Engine engine;
+
+    Car() {
+        engine = new Engine();
+    }
+
+    void startCar() {
+        engine.start();
+    }
+}
+
+class Vehicle {      // Parent class
+    void move() {
+        System.out.println("Vehicle moving");
+    }
+}
+
+class Bike extends Vehicle {   // Inheritance (Bike IS-A Vehicle)
+}
+
+interface Flyable {   // Interface
+    void fly();
+}
+
+class Bird implements Flyable {
+    public void fly() {
+        System.out.println("Bird flying");
+    }
+}
