@@ -16,7 +16,7 @@ public class D {
         for (int i=0;i<size;i++){
             q1.insert(scn.nextInt());
         }
-        /*
+
         while (!q1.isEmpty()){
             int temp= q1.remove();
             while (!q2.isEmpty()&&temp> q2.peekFront()){
@@ -33,10 +33,10 @@ public class D {
         System.out.println();
         System.out.println("Maximum number :- "+max);
 
-    */
 
 
-        int max= q1.remove();
+
+        /*int max= q1.remove();
 
         while (!q1.isEmpty()){
             int temp= q1.remove();
@@ -59,6 +59,7 @@ public class D {
 
         System.out.println();
         System.out.println("Maximum number :- "+max);
+    */
     }
 
 }
