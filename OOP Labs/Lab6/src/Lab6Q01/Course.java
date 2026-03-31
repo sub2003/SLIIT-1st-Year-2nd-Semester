@@ -6,8 +6,8 @@ public class Course {
     protected int durationWeeks;
 
     public Course() {
-        this.courseID = "";
-        this.courseName = "";
+        this.courseID = "N/A";
+        this.courseName = "N/A";
         this.durationWeeks = 0;
     }
 
@@ -18,15 +18,20 @@ public class Course {
     }
 
     public void displayCourseDetails(){
-
+        System.out.println("Course Name: "+courseName);
+        System.out.println("Course ID : "+courseID);
+        System.out.println("Course Duration (Weeks) : "+durationWeeks);
+        System.out.println("Total Fee : "+calculateTotalFee());
+        System.out.println("Basic Fee : "+calculateTotalFee());
     }
 
     public double calculateTotalFee(){
         return 10000.00;
     }
     public double calculateTotalFee(double discountPercentage){
-        calculateTotalFee();
-        return calculateTotalFee()*discountPercentage;
+        double discountedFee=(calculateTotalFee()*discountPercentage/100);
+        return calculateTotalFee()-discountedFee;
+
     }
 
 }
