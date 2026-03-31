@@ -5,7 +5,8 @@ public class Link {
     public int studentId;
     public int marks;
 
-    public Link(int marks, int studentId) {
+
+    public Link(int studentId, int marks) {
         this.marks = marks;
         this.next = null;
         this.studentId = studentId;
