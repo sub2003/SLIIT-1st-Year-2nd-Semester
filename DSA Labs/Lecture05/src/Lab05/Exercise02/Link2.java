@@ -1,12 +1,12 @@
 package Lab05.Exercise02;
 
-public class Link {
+public class Link2 {
     int bookID;
     String bookTitle;
     int numberOfCoppies;
-    Link next;
+    Link2 next;
 
-    public Link(int bookID, String bookTitle,int numberOfCoppies) {
+    public Link2(int bookID, String bookTitle,int numberOfCoppies) {
         this.bookID = bookID;
         this.bookTitle = bookTitle;
         this.numberOfCoppies=numberOfCoppies;

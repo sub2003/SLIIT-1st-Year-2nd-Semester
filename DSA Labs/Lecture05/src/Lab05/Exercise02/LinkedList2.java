@@ -1,10 +1,10 @@
 package Lab05.Exercise02;
 
-public class LinkedList {
+public class LinkedList2 {
 
-    private Link first;
+    private Link2 first;
 
-    public LinkedList() {
+    public LinkedList2() {
         this.first = null;
     }
 
@@ -13,7 +13,7 @@ public class LinkedList {
     }
 
     public void InsertFirst(int id, String title, int copies) {
-        Link newLink1 = new Link(id, title, copies);
+        Link2 newLink1 = new Link2(id, title, copies);
         newLink1.next = first;
         first = newLink1;
     }
@@ -23,10 +23,10 @@ public class LinkedList {
             System.out.println("Linked List is empty. Nothing Inserted.");
             return false;
         }
-        Link current = first;
+        Link2 current = first;
         while (current != null) {
             if (current.bookID == key) {
-                Link newLink2 = new Link(id, title, copies);
+                Link2 newLink2 = new Link2(id, title, copies);
                 newLink2.next = current.next;
                 current.next = newLink2;
                 return true;
@@ -36,12 +36,12 @@ public class LinkedList {
         return false;
     }
 
-    public Link Find(int key) {
+    public Link2 Find(int key) {
         if (isEmpty()) {
             System.out.println("Linked List is empty.");
             return null;
         }
-        Link current = first;
+        Link2 current = first;
         while (current != null) {
             if (current.bookID == key) {
                 return current;
@@ -51,25 +51,25 @@ public class LinkedList {
         return null;
     }
 
-    public Link DeleteFirst() {
+    public Link2 DeleteFirst() {
         if (isEmpty()) {
             System.out.println("Linked List is empty. Nothing deleted.");
             return null;
         }
-        Link temp = first;
+        Link2 temp = first;
         first = first.next;
         System.out.println("List after deleting first element: ");
         return temp;
 
     }
 
-    public Link Delete(int key) {
+    public Link2 Delete(int key) {
         if (isEmpty()) {
             return null;
         }
 
-        Link previous = null;
-        Link current = first;
+        Link2 previous = null;
+        Link2 current = first;
 
         while (current != null) {
             if (current.bookID == key) {
@@ -88,7 +88,7 @@ public class LinkedList {
     }
 
     public void displayLinkedList(){
-        Link current=first;
+        Link2 current=first;
         while (current!=null){
             System.out.println("ID: "+current.bookID+", Title: "+current.bookTitle+", Copies: "+current.numberOfCoppies);
             current=current.next;
