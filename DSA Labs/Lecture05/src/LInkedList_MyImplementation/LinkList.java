@@ -68,7 +68,7 @@ public class LinkList {
             current=current.next;   //at last if the key is not found through current .next , current become null.
         }
 
-        if(current==null){   //at last if we didnt find the key current is null so we should return false.
+        if(current==null){   //at last if we didn't find the key current is null so we should return false.
             System.out.println("Key "+key+" not found - cannot insert.");
             return false;
         }//if this block is not executed below codes should execute and return true. which means the key is found.

@@ -56,6 +56,6 @@ public class Stack {
     }
 
     public boolean isFull(){
-        if(top==size-1)
+        return (top==size-1);
     }
 }
