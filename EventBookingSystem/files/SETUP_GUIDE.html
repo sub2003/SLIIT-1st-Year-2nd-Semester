@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>EventHorizon – IntelliJ Setup Guide</title>
+<style>
+  body { font-family: 'Segoe UI', sans-serif; background:#0f0f1a; color:#e2e8f0; margin:0; padding:32px; line-height:1.7; }
+  .container { max-width:860px; margin:0 auto; }
+  h1 { color:#7c3aed; font-size:2rem; margin-bottom:4px; }
+  h2 { color:#06b6d4; font-size:1.2rem; margin-top:36px; margin-bottom:12px; border-bottom:1px solid #1e1e3f; padding-bottom:8px; }
+  h3 { color:#c4b5fd; font-size:1rem; margin-bottom:8px; }
+  .step { background:#111128; border:1px solid #1e1e3f; border-radius:10px; padding:20px 24px; margin-bottom:16px; }
+  .step-num { display:inline-block; background:#7c3aed; color:#fff; width:28px; height:28px; border-radius:50%; text-align:center; line-height:28px; font-weight:700; font-size:0.85rem; margin-right:10px; }
+  code { background:#1e1e3f; color:#06b6d4; padding:2px 8px; border-radius:4px; font-size:0.88rem; font-family:'Courier New',monospace; }
+  pre { background:#0a0a1a; border:1px solid #1e1e3f; border-radius:8px; padding:16px; overflow-x:auto; font-size:0.85rem; color:#a5f3fc; }
+  .file-tree { background:#0a0a1a; border:1px solid #1e1e3f; border-radius:8px; padding:16px; font-family:'Courier New',monospace; font-size:0.85rem; line-height:1.9; }
+  .tree-dir  { color:#7c3aed; }
+  .tree-java { color:#06b6d4; }
+  .tree-jsp  { color:#f59e0b; }
+  .tree-web  { color:#10b981; }
+  .warn { background:rgba(245,158,11,0.1); border:1px solid rgba(245,158,11,0.3); border-radius:8px; padding:14px 18px; margin:12px 0; color:#fcd34d; }
+  .tip  { background:rgba(16,185,129,0.1); border:1px solid rgba(16,185,129,0.3); border-radius:8px; padding:14px 18px; margin:12px 0; color:#6ee7b7; }
+  table { width:100%; border-collapse:collapse; margin:12px 0; }
+  th { background:#1e1e3f; color:#94a3b8; padding:10px 14px; text-align:left; font-size:0.82rem; text-transform:uppercase; }
+  td { padding:10px 14px; border-bottom:1px solid #1e1e3f; font-size:0.9rem; }
+  a  { color:#06b6d4; }
+</style>
+</head>
+<body>
+<div class="container">
+
+<h1>⬡ EventHorizon</h1>
+<p style="color:#94a3b8;">Event Ticket Booking System — SE1020 OOP Project<br>
+<strong style="color:#7c3aed;">Complete IntelliJ IDEA Setup Guide</strong></p>
+
+<!-- ======================================================= -->
+<h2>📁 Full Project File Structure</h2>
+<div class="file-tree">
+<span class="tree-dir">EventHorizon/</span><br>
+├── <span class="tree-web">pom.xml</span>                               ← Maven config<br>
+├── <span class="tree-dir">data/</span><br>
+│   ├── <span class="tree-web">users.txt</span>                         ← User records<br>
+│   ├── <span class="tree-web">events.txt</span>                        ← Event records<br>
+│   └── <span class="tree-web">bookings.txt</span>                      ← Booking records<br>
+├── <span class="tree-dir">src/main/java/com/eventhorizon/</span><br>
+│   ├── <span class="tree-dir">model/</span><br>
+│   │   ├── <span class="tree-java">User.java</span>                    ← Abstract base (Inheritance)<br>
+│   │   ├── <span class="tree-java">Customer.java</span>                ← Extends User<br>
+│   │   ├── <span class="tree-java">Admin.java</span>                   ← Extends User<br>
+│   │   ├── <span class="tree-java">Event.java</span>                   ← Event entity<br>
+│   │   └── <span class="tree-java">Booking.java</span>                 ← Booking entity<br>
+│   ├── <span class="tree-dir">service/</span><br>
+│   │   ├── <span class="tree-java">UserService.java</span>             ← User CRUD<br>
+│   │   ├── <span class="tree-java">EventService.java</span>            ← Event CRUD<br>
+│   │   └── <span class="tree-java">BookingService.java</span>          ← Booking CRUD<br>
+│   ├── <span class="tree-dir">servlet/</span><br>
+│   │   ├── <span class="tree-java">UserServlet.java</span>             ← HTTP /user<br>
+│   │   ├── <span class="tree-java">EventServlet.java</span>            ← HTTP /event<br>
+│   │   └── <span class="tree-java">BookingServlet.java</span>          ← HTTP /booking<br>
+│   └── <span class="tree-dir">util/</span><br>
+│       └── <span class="tree-java">FileHandler.java</span>             ← File I/O utility<br>
+└── <span class="tree-dir">web/</span><br>
+    ├── <span class="tree-jsp">index.jsp</span>                         ← Home page<br>
+    ├── <span class="tree-jsp">login.jsp</span>                         ← Login<br>
+    ├── <span class="tree-jsp">register.jsp</span>                      ← Register<br>
+    ├── <span class="tree-jsp">events.jsp</span>                        ← Event listing<br>
+    ├── <span class="tree-jsp">eventDetail.jsp</span>                   ← Event + booking form<br>
+    ├── <span class="tree-jsp">myBookings.jsp</span>                    ← Customer bookings<br>
+    ├── <span class="tree-jsp">profile.jsp</span>                       ← Profile update<br>
+    ├── <span class="tree-dir">admin/</span><br>
+    │   ├── <span class="tree-jsp">dashboard.jsp</span>                 ← Admin home<br>
+    │   ├── <span class="tree-jsp">events.jsp</span>                    ← Admin: manage events<br>
+    │   ├── <span class="tree-jsp">addEvent.jsp</span>                  ← Admin: add event<br>
+    │   ├── <span class="tree-jsp">editEvent.jsp</span>                 ← Admin: edit event<br>
+    │   ├── <span class="tree-jsp">bookings.jsp</span>                  ← Admin: all bookings<br>
+    │   └── <span class="tree-jsp">users.jsp</span>                     ← Admin: manage users<br>
+    ├── <span class="tree-dir">WEB-INF/</span><br>
+    │   └── <span class="tree-web">web.xml</span>                       ← Servlet mappings<br>
+    ├── <span class="tree-dir">css/</span><br>
+    │   └── <span class="tree-web">style.css</span><br>
+    └── <span class="tree-dir">js/</span><br>
+        └── <span class="tree-web">main.js</span>
+</div>
+
+<!-- ======================================================= -->
+<h2>🛠️ Step-by-Step IntelliJ Setup</h2>
+
+<div class="step">
+  <span class="step-num">1</span><strong>Create a New Project in IntelliJ IDEA</strong>
+  <p>Open IntelliJ IDEA → <code>File → New → Project</code></p>
+  <ul>
+    <li>Select <strong>Maven Archetype</strong> from the left panel</li>
+    <li>Archetype: <code>maven-archetype-webapp</code></li>
+    <li>GroupId: <code>com.eventhorizon</code></li>
+    <li>ArtifactId: <code>EventHorizon</code></li>
+    <li>JDK: <strong>17 or higher</strong></li>
+    <li>Click <strong>Create</strong></li>
+  </ul>
+</div>
+
+<div class="step">
+  <span class="step-num">2</span><strong>Replace pom.xml</strong>
+  <p>Delete the generated <code>pom.xml</code> and paste the content from the provided <code>pom.xml</code> file. Then click the Maven reload icon (🔄) that appears in the top right.</p>
+</div>
+
+<div class="step">
+  <span class="step-num">3</span><strong>Create the Java Source Folders</strong>
+  <p>In IntelliJ's Project panel, create these folders under <code>src/main/java/</code>:</p>
+  <pre>com/eventhorizon/model
+com/eventhorizon/service
+com/eventhorizon/servlet
+com/eventhorizon/util</pre>
+  <p>Right-click <code>src/main/java</code> → <strong>New → Package</strong> → type <code>com.eventhorizon.model</code> → repeat for others.</p>
+</div>
+
+<div class="step">
+  <span class="step-num">4</span><strong>Add All Java Files</strong>
+  <p>Right-click each package → <strong>New → Java Class</strong> → paste the corresponding code:</p>
+  <table>
+    <tr><th>Package</th><th>Files to Create</th></tr>
+    <tr><td>model</td><td>User.java, Customer.java, Admin.java, Event.java, Booking.java</td></tr>
+    <tr><td>service</td><td>UserService.java, EventService.java, BookingService.java</td></tr>
+    <tr><td>servlet</td><td>UserServlet.java, EventServlet.java, BookingServlet.java</td></tr>
+    <tr><td>util</td><td>FileHandler.java</td></tr>
+  </table>
+</div>
+
+<div class="step">
+  <span class="step-num">5</span><strong>Set Up the Web Directory</strong>
+  <p>The Maven webapp archetype creates a <code>src/main/webapp/</code> folder. <strong>Rename or use this as your web folder.</strong> If you used the folder structure from this project (<code>web/</code>), tell IntelliJ by going to:</p>
+  <p><code>File → Project Structure → Modules → Web → Web Resource Directories</code> → set it to your <code>web/</code> folder.</p>
+  <div class="tip">✅ Easiest approach: Just use <code>src/main/webapp</code> as your web root and place all JSP/CSS/JS files there directly — Maven webapp archetype already sets this up.</div>
+</div>
+
+<div class="step">
+  <span class="step-num">6</span><strong>Add JSP & Static Files</strong>
+  <p>Place these files inside <code>src/main/webapp/</code> (or <code>web/</code>):</p>
+  <ul>
+    <li><code>index.jsp, login.jsp, register.jsp, events.jsp, eventDetail.jsp, myBookings.jsp, profile.jsp</code></li>
+    <li><code>WEB-INF/web.xml</code></li>
+    <li><code>css/style.css</code></li>
+    <li><code>js/main.js</code></li>
+    <li><code>admin/dashboard.jsp, admin/events.jsp, admin/addEvent.jsp, admin/editEvent.jsp, admin/bookings.jsp, admin/users.jsp</code></li>
+  </ul>
+</div>
+
+<div class="step">
+  <span class="step-num">7</span><strong>Add Data Files</strong>
+  <p>Create a <code>data/</code> folder at your project root (outside <code>src/</code>) and add:</p>
+  <ul>
+    <li><code>users.txt</code> — paste sample data</li>
+    <li><code>events.txt</code> — paste sample data</li>
+    <li><code>bookings.txt</code> — paste sample data</li>
+  </ul>
+  <div class="warn">⚠️ The <code>FileHandler.java</code> saves data to <code>System.getProperty("user.home") + "/eventhorizon_data/"</code> (your home directory). This is automatically created on first run. You can change the <code>DATA_DIR</code> path in <code>FileHandler.java</code> if you prefer a different location.</div>
+</div>
+
+<div class="step">
+  <span class="step-num">8</span><strong>Configure Tomcat in IntelliJ</strong>
+  <ol>
+    <li>Go to <code>Run → Edit Configurations</code></li>
+    <li>Click <strong>+</strong> → <strong>Tomcat Server → Local</strong></li>
+    <li>Under <strong>Server</strong> tab: set your Tomcat installation path<br>
+        (Download Tomcat 10+ from <a href="https://tomcat.apache.org">tomcat.apache.org</a> if not installed)</li>
+    <li>Under <strong>Deployment</strong> tab: click <strong>+</strong> → <strong>Artifact</strong> → select <code>EventHorizon:war exploded</code></li>
+    <li>Set <strong>Application context</strong> to <code>/EventHorizon</code></li>
+    <li>Click <strong>OK</strong></li>
+  </ol>
+  <div class="tip">✅ IntelliJ Ultimate has built-in Tomcat support. If you have Community Edition, use the <strong>Smart Tomcat</strong> plugin (free, install via Plugins menu).</div>
+</div>
+
+<div class="step">
+  <span class="step-num">9</span><strong>Run the Application</strong>
+  <ol>
+    <li>Click the green ▶️ <strong>Run</strong> button</li>
+    <li>Browser should open at: <code>http://localhost:8080/EventHorizon/</code></li>
+  </ol>
+  <p><strong>Test login credentials:</strong></p>
+  <table>
+    <tr><th>Role</th><th>Email</th><th>Password</th></tr>
+    <tr><td>Admin</td><td>admin@eventhorizon.com</td><td>admin123</td></tr>
+    <tr><td>Customer</td><td>bob@gmail.com</td><td>pass123</td></tr>
+    <tr><td>Customer</td><td>carol@gmail.com</td><td>carol456</td></tr>
+  </table>
+</div>
+
+<!-- ======================================================= -->
+<h2>✅ OOP Concepts Coverage (for Marking)</h2>
+<table>
+  <tr><th>Concept</th><th>Where It Is</th><th>Marks</th></tr>
+  <tr><td>Encapsulation</td><td>All model classes — private fields + getters/setters</td><td rowspan="4" style="vertical-align:middle;text-align:center;font-size:1.2rem;color:#7c3aed;">20 Marks</td></tr>
+  <tr><td>Inheritance</td><td>Customer & Admin extend abstract User class</td></tr>
+  <tr><td>Polymorphism</td><td>getRole() overridden in Customer & Admin; instanceof checks in UserService</td></tr>
+  <tr><td>Abstraction</td><td>abstract User class with abstract getRole() method</td></tr>
+  <tr><td>CRUD – Create</td><td>registerCustomer(), addEvent(), createBooking()</td><td rowspan="4" style="vertical-align:middle;text-align:center;font-size:1.2rem;color:#06b6d4;">30 Marks</td></tr>
+  <tr><td>CRUD – Read</td><td>getAllUsers(), getEventById(), getBookingsByCustomer()</td></tr>
+  <tr><td>CRUD – Update</td><td>updateUser(), updateEvent(), cancelBooking()</td></tr>
+  <tr><td>CRUD – Delete</td><td>deleteUser(), deleteEvent()</td></tr>
+  <tr><td>File Handling</td><td>FileHandler.java — readAllLines, appendLine, updateLine, deleteLine</td><td style="text-align:center;color:#10b981;">10 Marks</td></tr>
+  <tr><td>UI Design</td><td>Dark space theme, responsive CSS, 7 customer pages + 6 admin pages</td><td style="text-align:center;color:#f59e0b;">10 Marks</td></tr>
+</table>
+
+<!-- ======================================================= -->
+<h2>🚀 URL Reference</h2>
+<table>
+  <tr><th>URL</th><th>Description</th></tr>
+  <tr><td><code>/</code> or <code>/index.jsp</code></td><td>Homepage</td></tr>
+  <tr><td><code>/login.jsp</code></td><td>Login page</td></tr>
+  <tr><td><code>/register.jsp</code></td><td>Register page</td></tr>
+  <tr><td><code>/event?action=list</code></td><td>Browse all events</td></tr>
+  <tr><td><code>/event?action=view&id=EVT001</code></td><td>View event + book tickets</td></tr>
+  <tr><td><code>/event?action=search&q=concert</code></td><td>Search events</td></tr>
+  <tr><td><code>/booking?action=myBookings</code></td><td>Customer: my bookings</td></tr>
+  <tr><td><code>/profile.jsp</code></td><td>Update profile</td></tr>
+  <tr><td><code>/admin/dashboard.jsp</code></td><td>Admin dashboard</td></tr>
+  <tr><td><code>/admin/events.jsp</code></td><td>Admin: manage events</td></tr>
+  <tr><td><code>/admin/bookings.jsp</code></td><td>Admin: all bookings</td></tr>
+  <tr><td><code>/admin/users.jsp</code></td><td>Admin: manage users</td></tr>
+</table>
+
+<p style="text-align:center;color:#475569;margin-top:48px;font-size:0.85rem;">
+  SE1020 – Object Oriented Programming &nbsp;|&nbsp; EventHorizon Team &nbsp;|&nbsp; 2026
+</p>
+</div>
+</body>
+</html>

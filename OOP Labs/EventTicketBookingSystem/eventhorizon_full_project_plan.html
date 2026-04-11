@@ -1,0 +1,338 @@
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:var(--font-sans);}
+.tabs{display:flex;gap:0;border-bottom:0.5px solid var(--color-border-tertiary);margin-bottom:24px;overflow-x:auto;}
+.tab{padding:10px 18px;font-size:13px;cursor:pointer;border-bottom:2px solid transparent;color:var(--color-text-secondary);white-space:nowrap;transition:all .2s;}
+.tab.active{color:var(--color-text-primary);border-bottom-color:var(--color-text-primary);font-weight:500;}
+.panel{display:none;}.panel.active{display:block;}
+.card{background:var(--color-background-primary);border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-lg);padding:16px;margin-bottom:12px;}
+.badge{display:inline-block;padding:3px 10px;border-radius:20px;font-size:11px;font-weight:500;}
+.badge-blue{background:var(--color-background-info);color:var(--color-text-info);}
+.badge-green{background:var(--color-background-success);color:var(--color-text-success);}
+.badge-amber{background:var(--color-background-warning);color:var(--color-text-warning);}
+.badge-red{background:var(--color-background-danger);color:var(--color-text-danger);}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+.grid3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;}
+.label{font-size:11px;color:var(--color-text-secondary);margin-bottom:4px;text-transform:uppercase;letter-spacing:.05em;}
+.val{font-size:22px;font-weight:500;color:var(--color-text-primary);}
+.step-num{width:28px;height:28px;border-radius:50%;background:var(--color-background-secondary);border:0.5px solid var(--color-border-tertiary);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:500;flex-shrink:0;}
+.step-row{display:flex;gap:12px;align-items:flex-start;padding:12px 0;border-bottom:0.5px solid var(--color-border-tertiary);}
+.step-row:last-child{border-bottom:none;}
+.file-tag{display:inline-block;background:var(--color-background-secondary);border:0.5px solid var(--color-border-tertiary);border-radius:4px;padding:2px 8px;font-family:var(--font-mono);font-size:11px;color:var(--color-text-secondary);margin:2px 2px 0 0;}
+.oop-tag{display:inline-block;padding:2px 8px;border-radius:4px;font-size:11px;margin:2px 2px 0 0;}
+.prog-bar{height:6px;background:var(--color-background-secondary);border-radius:3px;overflow:hidden;margin-top:6px;}
+.prog-fill{height:100%;border-radius:3px;transition:width 1s ease;}
+.member-card{background:var(--color-background-primary);border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-lg);padding:14px;cursor:pointer;transition:border-color .2s;}
+.member-card:hover{border-color:var(--color-border-primary);}
+.member-card.selected{border:1.5px solid var(--color-border-info);}
+.detail-box{background:var(--color-background-secondary);border-radius:var(--border-radius-md);padding:14px;margin-top:14px;}
+.row-item{display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:0.5px solid var(--color-border-tertiary);font-size:13px;}
+.row-item:last-child{border-bottom:none;}
+</style>
+
+<h2 class="sr-only">EventHorizon full project plan — tabs for overview, components, tech stack, marks, and build order</h2>
+
+<div style="padding:16px 0 0;">
+  <p style="font-size:11px;color:var(--color-text-secondary);letter-spacing:.08em;text-transform:uppercase;margin-bottom:6px;">SE1020 OOP Project</p>
+  <p style="font-size:20px;font-weight:500;margin-bottom:4px;">EventHorizon — Full Project Plan</p>
+  <p style="font-size:13px;color:var(--color-text-secondary);margin-bottom:20px;">Everything your group needs to know before writing a single line of code</p>
+
+  <div class="grid3" style="margin-bottom:24px;">
+    <div style="background:var(--color-background-secondary);border-radius:var(--border-radius-md);padding:14px;text-align:center;">
+      <div class="label">Members</div><div class="val">6</div>
+    </div>
+    <div style="background:var(--color-background-secondary);border-radius:var(--border-radius-md);padding:14px;text-align:center;">
+      <div class="label">Total Marks</div><div class="val">100</div>
+    </div>
+    <div style="background:var(--color-background-secondary);border-radius:var(--border-radius-md);padding:14px;text-align:center;">
+      <div class="label">Java Files</div><div class="val">18</div>
+    </div>
+  </div>
+
+  <div class="tabs">
+    <div class="tab active" onclick="showTab('overview')">Overview</div>
+    <div class="tab" onclick="showTab('components')">Components</div>
+    <div class="tab" onclick="showTab('techstack')">Tech Stack</div>
+    <div class="tab" onclick="showTab('marks')">Marks</div>
+    <div class="tab" onclick="showTab('buildorder')">Build Order</div>
+  </div>
+
+  <!-- OVERVIEW -->
+  <div id="panel-overview" class="panel active">
+    <p style="font-size:13px;color:var(--color-text-secondary);margin-bottom:16px;">How the whole system works — from admin creating events to users booking tickets</p>
+    <div class="step-row">
+      <div class="step-num">1</div>
+      <div><span class="badge badge-red" style="margin-bottom:6px;">Admin</span><br><strong style="font-size:13px;">Creates an event</strong><br><span style="font-size:12px;color:var(--color-text-secondary);">"DJ Night — July 20 — 200 tickets — $10" saved to events table</span></div>
+    </div>
+    <div class="step-row">
+      <div class="step-num">2</div>
+      <div><span class="badge badge-blue" style="margin-bottom:6px;">User</span><br><strong style="font-size:13px;">Registers and logs in</strong><br><span style="font-size:12px;color:var(--color-text-secondary);">Name, email, password saved to users table</span></div>
+    </div>
+    <div class="step-row">
+      <div class="step-num">3</div>
+      <div><span class="badge badge-blue" style="margin-bottom:6px;">User</span><br><strong style="font-size:13px;">Books tickets</strong><br><span style="font-size:12px;color:var(--color-text-secondary);">"2 tickets for DJ Night" — status = PENDING saved to bookings table</span></div>
+    </div>
+    <div class="step-row">
+      <div class="step-num">4</div>
+      <div><span class="badge badge-red" style="margin-bottom:6px;">Admin</span><br><strong style="font-size:13px;">Approves the booking</strong><br><span style="font-size:12px;color:var(--color-text-secondary);">Status changes PENDING → APPROVED in bookings table</span></div>
+    </div>
+    <div class="step-row">
+      <div class="step-num">5</div>
+      <div><span class="badge badge-green" style="margin-bottom:6px;">System</span><br><strong style="font-size:13px;">Auto-generates a ticket</strong><br><span style="font-size:12px;color:var(--color-text-secondary);">Unique code like TK-2024-001 created in tickets table</span></div>
+    </div>
+    <div class="step-row">
+      <div class="step-num">6</div>
+      <div><span class="badge badge-blue" style="margin-bottom:6px;">User</span><br><strong style="font-size:13px;">Attends and writes a review</strong><br><span style="font-size:12px;color:var(--color-text-secondary);">"5 stars — amazing night!" saved to reviews table</span></div>
+    </div>
+  </div>
+
+  <!-- COMPONENTS -->
+  <div id="panel-components" class="panel">
+    <p style="font-size:13px;color:var(--color-text-secondary);margin-bottom:16px;">Click any component to see what that member needs to build</p>
+    <div class="grid2" id="member-grid">
+      <div class="member-card" onclick="selectMember(0)">
+        <div style="font-size:18px;margin-bottom:6px;">👤</div>
+        <div style="font-size:13px;font-weight:500;">User Management</div>
+        <div style="font-size:11px;color:var(--color-text-secondary);margin-top:2px;">Member 01</div>
+        <span class="badge badge-amber" style="margin-top:8px;">Medium</span>
+      </div>
+      <div class="member-card" onclick="selectMember(1)">
+        <div style="font-size:18px;margin-bottom:6px;">🎪</div>
+        <div style="font-size:13px;font-weight:500;">Event Management</div>
+        <div style="font-size:11px;color:var(--color-text-secondary);margin-top:2px;">Member 02</div>
+        <span class="badge badge-amber" style="margin-top:8px;">Medium</span>
+      </div>
+      <div class="member-card" onclick="selectMember(2)">
+        <div style="font-size:18px;margin-bottom:6px;">🎟️</div>
+        <div style="font-size:13px;font-weight:500;">Booking Management</div>
+        <div style="font-size:11px;color:var(--color-text-secondary);margin-top:2px;">Member 03</div>
+        <span class="badge badge-amber" style="margin-top:8px;">Medium</span>
+      </div>
+      <div class="member-card" onclick="selectMember(3)">
+        <div style="font-size:18px;margin-bottom:6px;">🎫</div>
+        <div style="font-size:13px;font-weight:500;">Ticket Management</div>
+        <div style="font-size:11px;color:var(--color-text-secondary);margin-top:2px;">Member 04</div>
+        <span class="badge badge-amber" style="margin-top:8px;">Medium</span>
+      </div>
+      <div class="member-card" onclick="selectMember(4)">
+        <div style="font-size:18px;margin-bottom:6px;">🛡️</div>
+        <div style="font-size:13px;font-weight:500;">Admin Management</div>
+        <div style="font-size:11px;color:var(--color-text-secondary);margin-top:2px;">Member 05</div>
+        <span class="badge badge-green" style="margin-top:8px;">Easy</span>
+      </div>
+      <div class="member-card" onclick="selectMember(5)">
+        <div style="font-size:18px;margin-bottom:6px;">⭐</div>
+        <div style="font-size:13px;font-weight:500;">Review Management</div>
+        <div style="font-size:11px;color:var(--color-text-secondary);margin-top:2px;">Member 06</div>
+        <span class="badge badge-green" style="margin-top:8px;">Easy</span>
+      </div>
+    </div>
+    <div id="member-detail" class="detail-box" style="display:none;"></div>
+  </div>
+
+  <!-- TECH STACK -->
+  <div id="panel-techstack" class="panel">
+    <p style="font-size:13px;color:var(--color-text-secondary);margin-bottom:16px;">Every tool your group will use and why</p>
+    <div class="card">
+      <div class="row-item"><span style="font-weight:500;">Java + Spring Boot</span><span class="badge badge-red">Backend</span></div>
+      <div style="font-size:12px;color:var(--color-text-secondary);padding-top:6px;">All your OOP classes go here. This is what examiners check most carefully.</div>
+    </div>
+    <div class="card">
+      <div class="row-item"><span style="font-weight:500;">JSP Servlets</span><span class="badge badge-blue">Request Handler</span></div>
+      <div style="font-size:12px;color:var(--color-text-secondary);padding-top:6px;">Bridge between your HTML buttons and your Java logic. One servlet per component.</div>
+    </div>
+    <div class="card">
+      <div class="row-item"><span style="font-weight:500;">HTML + Tailwind CSS</span><span class="badge badge-green">Frontend — Done!</span></div>
+      <div style="font-size:12px;color:var(--color-text-secondary);padding-top:6px;">Your UI is already built in the EventHorizon HTML file. You just connect it to Java.</div>
+    </div>
+    <div class="card">
+      <div class="row-item"><span style="font-weight:500;">MySQL on Aiven Cloud</span><span class="badge badge-amber">Database — Done!</span></div>
+      <div style="font-size:12px;color:var(--color-text-secondary);padding-top:6px;">Shared cloud database already set up. All 6 members connect to the same data.</div>
+    </div>
+    <div class="card">
+      <div class="row-item"><span style="font-weight:500;">JDBC</span><span class="badge badge-blue">DB Connector</span></div>
+      <div style="font-size:12px;color:var(--color-text-secondary);padding-top:6px;">One Java file (DBConnection.java) connects everything. Written once, used by everyone.</div>
+    </div>
+    <div class="card">
+      <div class="row-item"><span style="font-weight:500;">GitHub</span><span class="badge badge-amber">Version Control — 10 marks</span></div>
+      <div style="font-size:12px;color:var(--color-text-secondary);padding-top:6px;">Everyone commits to their own branch. 15–20 meaningful commits per person needed.</div>
+    </div>
+    <div class="card">
+      <div class="row-item"><span style="font-weight:500;">IntelliJ IDEA</span><span class="badge badge-blue">IDE</span></div>
+      <div style="font-size:12px;color:var(--color-text-secondary);padding-top:6px;">Required by university. Everyone must use this — not VS Code, not Eclipse.</div>
+    </div>
+    <div class="card">
+      <div class="row-item"><span style="font-weight:500;">Maven (pom.xml)</span><span class="badge badge-blue">Build Tool</span></div>
+      <div style="font-size:12px;color:var(--color-text-secondary);padding-top:6px;">Manages all dependencies automatically. You never manually download JAR files.</div>
+    </div>
+  </div>
+
+  <!-- MARKS -->
+  <div id="panel-marks" class="panel">
+    <p style="font-size:13px;color:var(--color-text-secondary);margin-bottom:16px;">Where every mark comes from — focus on the top 2 first</p>
+    <div id="marks-list"></div>
+    <div style="background:var(--color-background-info);border-radius:var(--border-radius-md);padding:12px;margin-top:16px;">
+      <p style="font-size:12px;color:var(--color-text-info);">CRUD + OOP = 50 marks. Get these two right first and the rest follows naturally.</p>
+    </div>
+  </div>
+
+  <!-- BUILD ORDER -->
+  <div id="panel-buildorder" class="panel">
+    <p style="font-size:13px;color:var(--color-text-secondary);margin-bottom:16px;">Do these steps in order — skipping steps causes problems later</p>
+    <div id="build-steps"></div>
+  </div>
+</div>
+
+<script>
+const members = [
+  {
+    name:'User Management', emoji:'👤', member:'Member 01',
+    files:['User.java','RegularUser.java','UserServlet.java'],
+    table:'users',
+    crud:['Register a new user (CREATE)','View/search users (READ)','Update email and password (UPDATE)','Delete account (DELETE)'],
+    oop:['Encapsulation — private fields + getters/setters','Inheritance — RegularUser extends User','Polymorphism — login() works differently per type'],
+    db:'id, name, email, password, userType, createdAt'
+  },
+  {
+    name:'Event Management', emoji:'🎪', member:'Member 02',
+    files:['Event.java','PhysicalEvent.java','EventServlet.java'],
+    table:'events',
+    crud:['Add a new event (CREATE)','Browse/filter events (READ)','Edit venue or date (UPDATE)','Cancel an event (DELETE)'],
+    oop:['Encapsulation — private title, venue, price fields','Inheritance — PhysicalEvent extends Event','Polymorphism — getDetails() shows different info per type'],
+    db:'id, title, category, venue, eventDate, totalTickets, availableTickets, price'
+  },
+  {
+    name:'Booking Management', emoji:'🎟️', member:'Member 03',
+    files:['Booking.java','PremiumBooking.java','BookingServlet.java'],
+    table:'bookings',
+    crud:['Submit a booking request (CREATE)','View all bookings (READ)','Approve or reject booking (UPDATE)','Cancel a booking (DELETE)'],
+    oop:['Encapsulation — private status field','Inheritance — PremiumBooking extends Booking','Abstraction — processBooking() hides complex logic'],
+    db:'id, userId, eventId, quantity, status, bookedAt'
+  },
+  {
+    name:'Ticket Management', emoji:'🎫', member:'Member 04',
+    files:['Ticket.java','VIPTicket.java','TicketServlet.java'],
+    table:'tickets',
+    crud:['Generate ticket after approval (CREATE)','View my tickets (READ)','Mark ticket as used (UPDATE)','Cancel a ticket (DELETE)'],
+    oop:['Encapsulation — private ticketCode field','Inheritance — VIPTicket extends Ticket','Polymorphism — display() shows different UI per type'],
+    db:'id, ticketCode, bookingId, userId, status, issuedAt'
+  },
+  {
+    name:'Admin Management', emoji:'🛡️', member:'Member 05',
+    files:['AdminUser.java','SuperAdmin.java','AdminServlet.java'],
+    table:'admins',
+    crud:['Create admin account (CREATE)','View all admins (READ)','Update permissions (UPDATE)','Remove admin access (DELETE)'],
+    oop:['Encapsulation — private permissions field','Inheritance — AdminUser extends User (member 01 file!)','Abstraction — admin-only methods hidden from regular users'],
+    db:'id, name, email, password, adminLevel, permissions'
+  },
+  {
+    name:'Review Management', emoji:'⭐', member:'Member 06',
+    files:['Review.java','VerifiedReview.java','ReviewServlet.java'],
+    table:'reviews',
+    crud:['Submit a star rating + comment (CREATE)','View all reviews for event (READ)','Edit your review (UPDATE)','Delete a review (DELETE)'],
+    oop:['Encapsulation — private rating and comment fields','Inheritance — VerifiedReview extends Review','Polymorphism — display() shows blue tick for verified'],
+    db:'id, userId, eventId, rating, comment, isVerified, createdAt'
+  }
+];
+
+const marks = [
+  {label:'CRUD Operations', sub:'All 4 must work — Create, Read, Update, Delete', marks:30, pct:30},
+  {label:'OOP Concepts', sub:'Encapsulation, Inheritance, Polymorphism, Abstraction in code', marks:20, pct:20},
+  {label:'File / Database Handling', sub:'MySQL with JDBC — INSERT, SELECT, UPDATE, DELETE', marks:10, pct:10},
+  {label:'User Interface Design', sub:'Min 3 UI pages per component — already done in HTML!', marks:10, pct:10},
+  {label:'GitHub Commit History', sub:'15–20 meaningful commits per person on own branch', marks:10, pct:10},
+  {label:'Viva Presentation', sub:'Explain your code, demo your component, answer OOP questions', marks:10, pct:10},
+  {label:'Documentation', sub:'Class diagrams + report with GitHub screenshots', marks:10, pct:10},
+];
+
+const buildSteps = [
+  {phase:'Group', title:'Setup — Database + GitHub', desc:'Aiven DB is done! Now create GitHub repo, invite all members, create 6 branches.'},
+  {phase:'Group', title:'Base Spring Boot project', desc:'One person creates the skeleton project and pushes to GitHub. Everyone else pulls it.'},
+  {phase:'Group', title:'DBConnection.java', desc:'Write the one file that connects Java to Aiven. Everyone shares this exact same file.'},
+  {phase:'Individual', title:'Model class (Encapsulation)', desc:'Write your main Java file — e.g. Review.java — with private fields and getters/setters.'},
+  {phase:'Individual', title:'Child class (Inheritance)', desc:'Write your second file — e.g. VerifiedReview.java — that extends your model class.'},
+  {phase:'Individual', title:'Servlet — CREATE operation', desc:'Write INSERT INTO SQL in your servlet. Test by submitting a form. Commit to GitHub.'},
+  {phase:'Individual', title:'Servlet — READ operation', desc:'Write SELECT * SQL. Fetch data and display it in your HTML page. Commit to GitHub.'},
+  {phase:'Individual', title:'Servlet — UPDATE + DELETE', desc:'Add edit and delete buttons with UPDATE and DELETE SQL. Test both. Commit to GitHub.'},
+  {phase:'Individual', title:'Testing + dummy data', desc:'Add 5–10 fake records. Click every button. Fix any bugs and commit the fixes.'},
+  {phase:'Individual', title:'Documentation + class diagram', desc:'Draw your class diagram. Screenshot your 15+ commits. Add to group report.'},
+];
+
+let selectedMember = -1;
+
+function showTab(name) {
+  document.querySelectorAll('.tab').forEach((t,i) => t.classList.remove('active'));
+  document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+  const tabs = ['overview','components','techstack','marks','buildorder'];
+  document.querySelectorAll('.tab')[tabs.indexOf(name)].classList.add('active');
+  document.getElementById('panel-'+name).classList.add('active');
+}
+
+function selectMember(i) {
+  document.querySelectorAll('.member-card').forEach((c,j) => c.classList.toggle('selected', j===i));
+  selectedMember = i;
+  const m = members[i];
+  const d = document.getElementById('member-detail');
+  d.style.display = 'block';
+  d.innerHTML = `
+    <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px;">
+      <span style="font-size:22px;">${m.emoji}</span>
+      <div>
+        <div style="font-size:14px;font-weight:500;">${m.name}</div>
+        <div style="font-size:11px;color:var(--color-text-secondary);">${m.member} — Table: ${m.table}</div>
+      </div>
+    </div>
+    <div style="margin-bottom:12px;">
+      <div class="label" style="margin-bottom:6px;">3 Java Files to write</div>
+      ${m.files.map(f=>`<span class="file-tag">${f}</span>`).join('')}
+    </div>
+    <div style="margin-bottom:12px;">
+      <div class="label" style="margin-bottom:6px;">4 CRUD Operations</div>
+      ${m.crud.map(c=>`<div style="font-size:12px;padding:3px 0;color:var(--color-text-secondary);">→ ${c}</div>`).join('')}
+    </div>
+    <div style="margin-bottom:12px;">
+      <div class="label" style="margin-bottom:6px;">OOP Concepts shown</div>
+      ${m.oop.map(o=>`<div style="font-size:12px;padding:3px 0;color:var(--color-text-secondary);">→ ${o}</div>`).join('')}
+    </div>
+    <div>
+      <div class="label" style="margin-bottom:4px;">Database columns</div>
+      <div style="font-family:var(--font-mono);font-size:11px;color:var(--color-text-secondary);line-height:1.7;">${m.db}</div>
+    </div>
+    <button onclick="sendPrompt('Guide me to build the ${m.name} component step by step')" style="margin-top:14px;width:100%;padding:10px;cursor:pointer;font-size:13px;border-radius:var(--border-radius-md);">Start building ${m.name} ↗</button>
+  `;
+}
+
+// Render marks
+const ml = document.getElementById('marks-list');
+marks.forEach(m => {
+  ml.innerHTML += `
+    <div class="card" style="padding:14px 16px;margin-bottom:8px;">
+      <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:4px;">
+        <span style="font-size:13px;font-weight:500;">${m.label}</span>
+        <span style="font-size:18px;font-weight:500;color:var(--color-text-primary);">${m.marks}</span>
+      </div>
+      <div style="font-size:12px;color:var(--color-text-secondary);margin-bottom:8px;">${m.sub}</div>
+      <div class="prog-bar"><div class="prog-fill" style="width:${m.pct}%;background:var(--color-text-primary);"></div></div>
+    </div>
+  `;
+});
+
+// Render build steps
+const bs = document.getElementById('build-steps');
+buildSteps.forEach((s,i) => {
+  const isGroup = s.phase === 'Group';
+  bs.innerHTML += `
+    <div class="step-row">
+      <div class="step-num">${i+1}</div>
+      <div style="flex:1;">
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:4px;">
+          <span style="font-size:13px;font-weight:500;">${s.title}</span>
+          <span class="badge ${isGroup?'badge-blue':'badge-green'}">${s.phase}</span>
+        </div>
+        <div style="font-size:12px;color:var(--color-text-secondary);">${s.desc}</div>
+      </div>
+    </div>
+  `;
+});
+</script>
