@@ -1,17 +1,17 @@
 package Q01;
 
 public class Room {
-    protected int roomNumber;
+    protected String roomNumber;
     protected String guestName;
     protected int numberOfNightsStayed;
 
     public Room() {
-        this.guestName = "";
+        this.guestName = "Unknown";
         this.numberOfNightsStayed = 0;
-        this.roomNumber = 0;
+        this.roomNumber = "000";
     }
 
-    public Room(String guestName, int numberOfNightsStayed, int roomNumber) {
+    public Room(String guestName, int numberOfNightsStayed, String roomNumber) {
         this.guestName = guestName;
         this.numberOfNightsStayed = numberOfNightsStayed;
         this.roomNumber = roomNumber;
@@ -20,7 +20,7 @@ public class Room {
     public void displayRoomDetails(){
         System.out.println("Room number : "+roomNumber);
         System.out.println("Guest Name : "+guestName);
-        System.out.println("Number of nights stayed : "+numberOfNightsStayed);
+        System.out.println("Nights : "+numberOfNightsStayed);
     }
 
     public double calculateRoomCost(){

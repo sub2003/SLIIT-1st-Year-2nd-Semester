@@ -8,7 +8,7 @@ public class StandardRoom extends Room{
         this.wifiIncluded = false;
     }
 
-    public StandardRoom(String guestName, int numberOfNightsStayed, int roomNumber, boolean wifiIncluded) {
+    public StandardRoom(String guestName, int numberOfNightsStayed, String roomNumber, boolean wifiIncluded) {
         super(guestName, numberOfNightsStayed, roomNumber);
         this.wifiIncluded = wifiIncluded;
     }
@@ -20,9 +20,10 @@ public class StandardRoom extends Room{
 
     @Override
     public void displayRoomDetails() {
+        System.out.println("--- Standard Room ---");
         super.displayRoomDetails();
-        System.out.println("Wi-Fi status(included) : "+((wifiIncluded)?"Included":"Not Included"));
-        System.out.println("Total room cost : "+calculateRoomCost());
+        System.out.println("Wi-Fi Included : "+((wifiIncluded)?"Included":"No"));
+        System.out.println("Total Cost : $"+calculateRoomCost());
         System.out.println("Discounted Cost (per night $10 off): "+super.calculateRoomCost(10));
     }
 }
