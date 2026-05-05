@@ -1,10 +1,10 @@
 package Exercise01;
 
-public class Tree01 {
+public class Tree {
 
     private Node root;
 
-    public Tree01() {
+    public Tree() {
         this.root = null;
     }
 
@@ -48,7 +48,7 @@ public class Tree01 {
             else if (emp>current.employeeNumber) {
                 current=current.right;
                 if (current==null){
-                    parent.left=newNode1;
+                    parent.right=newNode1;
                     return newNode1;
                 }
             }
@@ -67,21 +67,52 @@ public class Tree01 {
         }
     }
 
+    public void inOrder() {
+
+        if (root == null) {
+            System.out.println("Tree is empty.");
+        }
+        else {
+            inOrder(root);
+        }
+    }
+
     private void preOrder(Node localRoot){
         if (localRoot!=null){
             localRoot.displayNode();
-            inOrder(localRoot.left);
-            inOrder(localRoot.right);
+            preOrder(localRoot.left);
+            preOrder(localRoot.right);
+        }
+    }
+
+    public void preOrder() {
+
+        if (root == null) {
+            System.out.println("Tree is empty.");
+        }
+        else {
+            preOrder(root);
         }
     }
 
     public void postOrder(Node localRoot){
         if (localRoot!=null){
-            inOrder(localRoot.left);
-            inOrder(localRoot.right);
+            postOrder(localRoot.left);
+            postOrder(localRoot.right);
             localRoot.displayNode();
         }
     }
+
+    public void postOrder() {
+
+        if (root == null) {
+            System.out.println("Tree is empty.");
+        }
+        else {
+            postOrder(root);
+        }
+    }
+
 
     private Node findRecursive(Node localRoot,int emp){
         if (localRoot==null){
@@ -97,6 +128,10 @@ public class Tree01 {
         else {
             return findRecursive(localRoot.right,emp);
         }
+    }
+
+    public Node findRecursive(int emp) {
+        return findRecursive(root, emp);
     }
 
     public void deleteAll(){

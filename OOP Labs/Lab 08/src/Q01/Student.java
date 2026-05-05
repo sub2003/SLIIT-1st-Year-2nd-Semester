@@ -23,8 +23,9 @@ public class Student {
     public void enrollCourse(Course c){
         if(courseCount<3){
             courses[courseCount]=c;
+            //courseCount++;
+            c.displayCourseDetails(); courses[courseCount].displayCourseDetails();  // both are same we can use both
             courseCount++;
-            c.displayCourseDetails();
             System.out.println("Course Added Successfully.");
         }
         else{

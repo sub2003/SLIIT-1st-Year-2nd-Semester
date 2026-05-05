@@ -30,7 +30,7 @@ public class Library {
 
     public void displayLibraryDetails() {
         System.out.println("Library Name : "+libraryName);
-        for (int i =0;i<3;i++){
+        for (int i =0;i<bookCount;i++){
             System.out.println("Book "+(i+1)+" : ");
             books[i].displayBookDetails();
             System.out.println();
