@@ -1,0 +1,26 @@
+Question 1: University Course Registration
+
+A University Management System maintains information about Courses and Students.
+
+Each course can have many students. Each student belongs to exactly one course. A course should be able to add students and display all students registered for it. A student should also be able to display their own name with the course name.
+
+Create:
+    Student
+    Course
+    Main
+
+Use:
+    Student[] students
+    studentCount
+    Sample Output
+    Course Name : BSc IT
+    Student Name : Nimal
+    Student Name : Kamal
+
+--- Individual Student View ---
+Student Name : Nimal, Course : BSc IT
+
+Relationship:
+
+Course <----> Student
+Bidirectional Association
