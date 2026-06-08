@@ -1,0 +1,24 @@
+Question 01 — University LMS System
+
+Design a University Learning Management System.
+
+A Student can enroll in many Course objects. A Course does not store student details. Each Course has many Assessment objects. Assessment is an abstract class. Quiz, Assignment, and FinalExam inherit from Assessment.
+
+Requirements:
+
+1.Student has studentId, name, and an array of Course.
+2.Course has courseCode, courseName, and an array of Assessment.
+3.Assessment has assessmentId, title, marks, and abstract method calculateWeightageMarks().
+4.Quiz, Assignment, and FinalExam override calculateWeightageMarks().
+5.Create an interface Gradable with displayGrade().
+6.Only FinalExam implements Gradable.
+7.Student must have enrollCourse(Course course).
+8.Course must have addAssessment(Assessment assessment).
+9.Use polymorphism to store all assessments in an Assessment[] array.
+10.Display student details, course details, assessment details, and final exam grade.
+
+Concepts tested:
+Inheritance, abstract class, interface, polymorphism, one-way association, array of objects, overriding.
+
+Tricky part:
+Student → Course is one-way association. Course should not store Student.
