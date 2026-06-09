@@ -1,0 +1,48 @@
+Question 01 — School Management System
+
+A School Management System manages different types of employees in a school. Each employee has a name and salary, but there are specialized employees such as Teachers and Clerks that have unique duties.
+
+Each Employee contains an IDCard that stores identification details, meaning IDCard is a part of Employee and cannot exist without it.
+
+Additionally, the school has multiple Departments, and each Employee is associated with a Department. However, a Department can exist independently of a specific employee.
+
+Different types of employees have unique implementations of the work() method, which need to be overridden in the respective classes.
+
+a) Implement a class called Employee with name(String) and salary(double) attributes.
+i. Create a method called work() that prints a generic message.
+
+b) Create two classes called Teacher and Clerk as subclasses of Employee.
+i. Override the work() method to display unique messages for each type.
+
+c) Implement an IDCard class with cardNumber(String) as an attribute.
+i. The IDCard should be part of an Employee using Composition and initialized within the Employee constructor.
+
+d) Create a class called Department with departmentName(String) and location(String) attributes.
+i. A Department should be associated with an Employee using Aggregation.
+
+e) Modify the Teacher and Clerk classes to include a Department for each class.
+
+f) Create a SchoolApp class with a main method to:
+i. Create objects for Teacher and Clerk with their IDCards.
+ii. Assign Departments to those employees.
+iii. Call the work() method and display full details.
+
+Sample Output:
+
+Teacher Details
+Teacher is teaching students.
+Employee Name: Mr. Perera
+Salary: Rs. 75000.0
+ID Card Number: ID1001
+Department Name: Science
+Location: Block A
+Subject: Mathematics
+
+Clerk Details
+Clerk is managing office documents.
+Employee Name: Ms. Silva
+Salary: Rs. 45000.0
+ID Card Number: ID2001
+Department Name: Administration
+Location: Block B
+Desk Number: D12

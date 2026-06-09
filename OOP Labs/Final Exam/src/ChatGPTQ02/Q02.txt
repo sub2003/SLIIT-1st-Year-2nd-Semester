@@ -1,0 +1,62 @@
+Question 02
+
+A University Course Management System manages different types of academic users in a university. Each academic user has a user ID and name, but there are specialized users such as Students and Lecturers.
+
+Each Course contains a CourseMaterial that stores lecture notes information, meaning CourseMaterial is part of a Course and cannot exist without it.
+
+Additionally, the university has multiple Lecturers, and each Lecturer can be assigned to a Course. However, a Lecturer can exist independently even if no course is assigned.
+
+Different types of academic users have unique implementations of the displayRole() method, which need to be overridden in the respective classes.
+
+a) Implement a class called AcademicUser with userID(String) and name(String) attributes.
+i. Create a method called displayRole() that prints a generic academic user message.
+
+b) Create two classes called Student and Lecturer as subclasses of AcademicUser.
+i. Override the displayRole() method to display unique messages for each type.
+
+c) Implement a CourseMaterial class with materialTitle(String) and fileType(String) as attributes.
+i. The CourseMaterial should be part of a Course using Composition and initialized within the Course constructor.
+
+d) Create a class called Course with courseCode(String), courseName(String), and creditValue(int) attributes.
+i. A Lecturer should be associated with a Course using Aggregation.
+
+e) Create an Enrollment class that includes a Student and a Course.
+i. Add a method called calculateFinalGrade() using the following rules:
+
+marks >= 75 → A
+marks >= 65 → B
+marks >= 50 → C
+otherwise → F
+
+f) Create a UniversityApp class with a main method to:
+i. Create Student and Lecturer objects.
+ii. Create Course objects with CourseMaterial.
+iii. Enroll students into courses.
+iv. Display enrollment details including student name, course name, lecturer name, material title, marks, and final grade.
+
+Sample Output:
+
+Student Enrollment Details
+Student is enrolled in a course.
+Student Name: Kasun Perera
+Course Name: Object Oriented Programming
+Lecturer Name: Dr. Fernando
+Course Material: OOP Lecture Notes
+File Type: PDF
+Marks: 82.0
+Final Grade: A
+
+Lecturer Details
+Lecturer is teaching a course.
+Lecturer Name: Dr. Fernando
+Course Code: IT2030
+Credit Value: 4
+
+Relationships tested:
+
+Inheritance  : Student and Lecturer extend AcademicUser
+Composition  : Course has CourseMaterial
+Aggregation  : Course has Lecturer
+Association  : Enrollment connects Student and Course
+Polymorphism : displayRole() overridden
+Dependency   : Enrollment uses Course and Student

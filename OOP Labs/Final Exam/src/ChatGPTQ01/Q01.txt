@@ -1,0 +1,59 @@
+Question 01
+
+A Hospital Management System manages different types of medical staff and patient treatment records. Each person has a name and contact number, but there are specialized people such as Doctors and Nurses who have unique responsibilities.
+
+Each TreatmentRecord contains a MedicalReport that stores the diagnosis details, meaning the MedicalReport is part of the TreatmentRecord and cannot exist without it.
+
+Additionally, the hospital has multiple Patients, and each Patient is associated with a TreatmentRecord. However, a Patient can exist independently even if there is no treatment record.
+
+Different types of medical staff have unique implementations of the performDuty() method, which need to be overridden in the respective classes.
+
+a) Implement a class called MedicalStaff with staffID(String), name(String), and contactNumber(String) attributes.
+i. Create a method called performDuty() that prints a generic message.
+
+b) Create two classes called Doctor and Nurse as subclasses of MedicalStaff.
+i. Override the performDuty() method to display unique messages for each type.
+
+c) Implement a MedicalReport class with diagnosis(String) and reportDate(String) as attributes.
+i. The MedicalReport should be part of a TreatmentRecord using Composition and initialized within the TreatmentRecord constructor.
+
+d) Create a class called Patient with patientID(String), patientName(String), and age(int) attributes.
+i. A Patient should be associated with a TreatmentRecord using Aggregation.
+
+e) Modify the TreatmentRecord class to include a Patient and a MedicalStaff member.
+i. The staff member may be a Doctor or Nurse.
+
+f) Create a HospitalApp class with a main method to:
+i. Create objects for different medical staff members.
+ii. Create patients and assign them to treatment records.
+iii. Display full treatment details, including the patient, staff member, and medical report.
+
+Sample Output:
+
+Doctor Treatment Details
+Doctor is diagnosing the patient.
+Staff Name: Dr. Silva
+Contact Number: 0712345678
+Patient Name: Nimal Perera
+Age: 45
+Diagnosis: High Blood Pressure
+Report Date: 2026-06-08
+Consultation Fee: Rs. 3500.0
+
+Nurse Treatment Details
+Nurse is assisting with patient care.
+Staff Name: Nurse Kamala
+Contact Number: 0778889999
+Patient Name: Amal Fernando
+Age: 30
+Diagnosis: Fever
+Report Date: 2026-06-08
+Ward Number: W12
+
+Relationships tested:
+
+Inheritance  : Doctor and Nurse extend MedicalStaff
+Composition  : TreatmentRecord has MedicalReport
+Aggregation  : TreatmentRecord has Patient
+Polymorphism : performDuty() overridden
+Association  : TreatmentRecord connects Patient and MedicalStaff

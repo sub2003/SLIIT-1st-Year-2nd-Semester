@@ -1,0 +1,48 @@
+Question 04 — Bank Account System
+
+A Bank Account System manages different types of bank accounts. Each account has an account number and balance, but there are specialized accounts such as SavingsAccount and CurrentAccount.
+
+Each Account contains an ATMCard that stores card details, meaning ATMCard is a part of Account and cannot exist without it.
+
+Additionally, the bank has multiple Customers, and each Customer is associated with an Account. However, a Customer can exist independently of a specific account.
+
+Different types of accounts have unique implementations of the showAccountType() method, which need to be overridden.
+
+a) Implement a class called Account with accountNumber(String) and balance(double) attributes.
+i. Create a method called showAccountType() that prints a generic account message.
+
+b) Create two classes called SavingsAccount and CurrentAccount as subclasses of Account.
+i. Override the showAccountType() method.
+
+c) Implement an ATMCard class with cardNumber(String) as an attribute.
+i. The ATMCard should be part of Account using Composition and initialized within the Account constructor.
+
+d) Create a class called Customer with customerName(String) and contactNumber(String) attributes.
+i. A Customer should be associated with Account using Aggregation.
+
+e) Modify SavingsAccount and CurrentAccount to include a Customer for each class.
+
+f) Create a BankApp class with a main method to:
+i. Create SavingsAccount and CurrentAccount objects with ATMCard.
+ii. Assign Customers to those accounts.
+iii. Call showAccountType() and display full details.
+
+Sample Output:
+
+Savings Account Details
+This is a savings account.
+Account Number: SA001
+Balance: Rs. 50000.0
+ATM Card Number: ATM1001
+Customer Name: Saman Perera
+Contact Number: 0711112222
+Interest Rate: 5.5%
+
+Current Account Details
+This is a current account.
+Account Number: CA001
+Balance: Rs. 120000.0
+ATM Card Number: ATM2001
+Customer Name: Amal Silva
+Contact Number: 0773334444
+Overdraft Limit: Rs. 25000.0
